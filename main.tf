@@ -5,10 +5,11 @@ resource "azurerm_resource_group" "applepay_rg_POC" {
 
 
 
-resource "azurerm_app_service_plan" "applepaytest_Webapp" {
+resource "azurerm_app_service_plan" "applepaytest_ASP" {
   name                = "applepaytest"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
+  kind = "Linux"
   
   sku {
     tier = "Standard"
@@ -17,12 +18,11 @@ resource "azurerm_app_service_plan" "applepaytest_Webapp" {
   }
 }
 
-resource "azurerm_app_service" "applepaytest_ASP" {
-  name                = "applepaytest-app-service"
+resource "azurerm_app_service" "applepaytest_AS" {
+  name                = "applepaytest"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
-  app_service_plan_id = "${azurerm_app_service_plan.applepaytest_Webapp.id}"
-  
+  app_service_plan_id = "${azurerm_app_service_plan.applepaytest_ASP.id}"
 
   site_config {
     dotnet_framework_version    = "v4.0"
