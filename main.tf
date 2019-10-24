@@ -32,7 +32,7 @@ resource "azurerm_app_service" "applepaytest_ASP" {
   
 
   site_config {
-    dotnet_framework_version    = ".NET Core 2.2"
+    dotnet_framework_version    = "v4.0"
     scm_type                    = "None"
     linux_fx_version            = "DOTNETCORE|2.2"
     ftps_state                  = "AllAllowed"
