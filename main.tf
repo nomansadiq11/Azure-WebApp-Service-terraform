@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "applepay_rg_POC" {
 resource "azurerm_app_service_plan" "applepaytest_Webapp" {
   name                = "applepaytest"
   location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.applepay-rg-POC.name}"
+  resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
 
   sku {
     tier = "Standard"
