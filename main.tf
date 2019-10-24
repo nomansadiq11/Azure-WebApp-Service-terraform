@@ -28,18 +28,15 @@ resource "azurerm_app_service" "applepaytest_ASP" {
   
   
   
-  kind = "Linux"
-
-  linuxFxVersion = "DOTNETCORE|2.2"
+  
   
 
-#   site_config {
-#     dotnet_framework_version = ".NET Core 2.2"
-#     scm_type                 = "LocalGit"
-#   }
-
-  app_settings = {
-    "SOME_KEY" = "some-value"
+  site_config {
+    dotnet_framework_version    = ".NET Core 2.2"
+    scm_type                    = "None"
+    linux_fx_version            = "DOTNETCORE|2.2"
+    ftps_state                  = "AllAllowed"
   }
 
+  
 }
