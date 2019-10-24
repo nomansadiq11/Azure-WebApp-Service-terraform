@@ -10,9 +10,6 @@ resource "azurerm_app_service_plan" "applepaytest_Webapp" {
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
   
-  
-  
-
   sku {
     tier = "Standard"
     size = "S1"
@@ -27,14 +24,11 @@ resource "azurerm_app_service" "applepaytest_ASP" {
   app_service_plan_id = "${azurerm_app_service_plan.applepaytest_Webapp.id}"
   
   
-  
-  
-  
 
   site_config {
     dotnet_framework_version    = "v4.0"
     scm_type                    = "None"
-    linux_fx_version            = "DOTNETCORE|2.2"
+    linux_fx_version            = "DOTNETCORE"
     ftps_state                  = "AllAllowed"
   }
 
