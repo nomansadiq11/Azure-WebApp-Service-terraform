@@ -13,9 +13,7 @@ resource "azurerm_app_service_plan" "applepaytest_Webapp" {
   sku {
     tier = "Standard"
     size = "S1"
-    family = "S"
     capacity = 1
-    name = "S1"
   }
 }
 
