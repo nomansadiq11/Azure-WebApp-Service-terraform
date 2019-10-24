@@ -9,7 +9,8 @@ resource "azurerm_app_service_plan" "applepaytest_ASP" {
   name                = "applepaytest"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
-  kind = "Linux"
+  kind                = "Linux"
+  reserved            = true
   
   sku {
     tier = "Standard"
