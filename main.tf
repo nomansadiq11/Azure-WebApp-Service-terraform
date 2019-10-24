@@ -9,6 +9,14 @@ resource "azurerm_app_service_plan" "applepaytest_Webapp" {
   name                = "applepaytest"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
+  
+  
+  kind = "Linux"
+
+  runtime = {
+      name = "dotnetcore"
+      version = "2.2"
+  }
 
   sku {
     tier = "Standard"
@@ -23,11 +31,12 @@ resource "azurerm_app_service" "applepaytest_ASP" {
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
   app_service_plan_id = "${azurerm_app_service_plan.applepaytest_Webapp.id}"
 
-  runtime = {
-      name ="dotnetcore"
-      version  = "2.2"
-      }
+  
 
+  site_config {
+    dotnet_framework_version = ".NET Core 2.2"
+    scm_type                 = "LocalGit"
+  }
 
   app_settings = {
     "SOME_KEY" = "some-value"
