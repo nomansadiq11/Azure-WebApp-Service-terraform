@@ -13,8 +13,8 @@ resource "azurerm_app_service_plan" "applepaytest_ASP" {
   reserved            = true
   
   sku {
-    tier = "Shared"
-    size = "D1"
+    tier = "Basic"
+    size = "B1"
     capacity = 1
   }
 }
