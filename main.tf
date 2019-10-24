@@ -23,10 +23,11 @@ resource "azurerm_app_service" "applepaytest_ASP" {
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
   app_service_plan_id = "${azurerm_app_service_plan.applepaytest_Webapp.id}"
 
-  site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
-  }
+  runtime = {
+      name ="dotnetcore"
+      version  = "2.2"
+      }
+
 
   app_settings = {
     "SOME_KEY" = "some-value"
