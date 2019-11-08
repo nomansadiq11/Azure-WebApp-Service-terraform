@@ -3,10 +3,17 @@ resource "azurerm_resource_group" "applepay_rg_POC" {
   location = "${var.location}"
 }
 
+resource "random_string" "fqdn" {
+    length  = 6
+    special = false
+    upper   = false
+    number  = false
+}
+
 
 
 resource "azurerm_app_service_plan" "applepaytest_ASP" {
-  name                = "applepaytest"
+  name                = "${random_string.fqdn.result}"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
   kind                = "Linux"
@@ -20,7 +27,7 @@ resource "azurerm_app_service_plan" "applepaytest_ASP" {
 }
 
 resource "azurerm_app_service" "applepaytest_AS" {
-  name                = "applepaytest"
+  name                = "${random_string.fqdn.result}"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.applepay_rg_POC.name}"
   app_service_plan_id = "${azurerm_app_service_plan.applepaytest_ASP.id}"
